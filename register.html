@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - WoMap</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Accessibility Panel -->
+    <div class="accessibility-panel" id="accessibilityPanel">
+        <button class="accessibility-toggle" id="accessibilityToggle" aria-label="Toggle accessibility panel">⚙️</button>
+        <div class="accessibility-content" id="accessibilityContent">
+            <h3 data-es="Accesibilidad" data-en="Accessibility">Accesibilidad</h3>
+            <div class="accessibility-option">
+                <label data-es="Tema" data-en="Theme">Tema</label>
+                <button id="themeToggle" class="toggle-btn"><span class="toggle-icon">🌙</span></button>
+            </div>
+            <div class="accessibility-option">
+                <label data-es="Tamaño de Texto" data-en="Text Size">Tamaño de Texto</label>
+                <select id="fontSizeSelect">
+                    <option value="small" data-es="Pequeño" data-en="Small">Pequeño</option>
+                    <option value="medium" selected data-es="Mediano" data-en="Medium">Mediano</option>
+                    <option value="large" data-es="Grande" data-en="Large">Grande</option>
+                    <option value="xlarge" data-es="Muy Grande" data-en="X-Large">Muy Grande</option>
+                </select>
+            </div>
+            <div class="accessibility-option">
+                <label data-es="Idioma" data-en="Language">Idioma</label>
+                <select id="languageSelect">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">WoMap</a>
+            <div class="nav-links">
+                <a href="login.html" class="nav-link" data-es="Iniciar Sesión" data-en="Login">Iniciar Sesión</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Register Form -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-card">
+                <h1 data-es="Crear Cuenta" data-en="Create Account">Crear Cuenta</h1>
+                <p class="auth-subtitle" data-es="Únete a nuestra comunidad segura" data-en="Join our safe community">
+                    Únete a nuestra comunidad segura
+                </p>
+
+                <!-- Step Indicator -->
+                <div class="steps-indicator">
+                    <div class="step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <span data-es="Datos Básicos" data-en="Basic Info">Datos Básicos</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-number">2</div>
+                        <span data-es="Verificación DNI" data-en="ID Verification">Verificación DNI</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-number">3</div>
+                        <span data-es="Perfil" data-en="Profile">Perfil</span>
+                    </div>
+                </div>
+
+                <!-- Step 1: Basic Info -->
+                <form id="step1Form" class="register-form">
+                    <div class="form-group">
+                        <label for="name" data-es="Nombre Completo" data-en="Full Name">Nombre Completo</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" data-es="Correo Electrónico" data-en="Email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" data-es="Contraseña" data-en="Password">Contraseña</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword" data-es="Confirmar Contraseña" data-en="Confirm Password">Confirmar Contraseña</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width" data-es="Siguiente" data-en="Next">Siguiente</button>
+                </form>
+
+                <!-- Step 2: DNI Verification -->
+                <form id="step2Form" class="register-form" style="display: none;">
+                    <div class="verification-info">
+                        <p data-es="Para garantizar la seguridad de todas nuestras usuarias, necesitamos verificar tu identidad mediante DNI." data-en="To ensure the safety of all our users, we need to verify your identity with an ID.">
+                            Para garantizar la seguridad de todas nuestras usuarias, necesitamos verificar tu identidad mediante DNI.
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label for="dniNumber" data-es="Número de DNI" data-en="ID Number">Número de DNI</label>
+                        <input type="text" id="dniNumber" name="dniNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dniPhoto" data-es="Foto del DNI (Frontal)" data-en="ID Photo (Front)">Foto del DNI (Frontal)</label>
+                        <input type="file" id="dniPhoto" name="dniPhoto" accept="image/*" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="showStep(1)" data-es="Atrás" data-en="Back">Atrás</button>
+                        <button type="submit" class="btn btn-primary" data-es="Siguiente" data-en="Next">Siguiente</button>
+                    </div>
+                </form>
+
+                <!-- Step 3: Profile -->
+                <form id="step3Form" class="register-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="city" data-es="Ciudad" data-en="City">Ciudad</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" data-es="Descripción" data-en="Description">Descripción</label>
+                        <textarea id="description" name="description" rows="4" placeholder="Cuéntanos sobre ti..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="interests" data-es="Intereses" data-en="Interests">Intereses</label>
+                        <input type="text" id="interests" name="interests" placeholder="Ej: deportes, música, arte">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="showStep(2)" data-es="Atrás" data-en="Back">Atrás</button>
+                        <button type="submit" class="btn btn-primary" data-es="Completar Registro" data-en="Complete Registration">Completar Registro</button>
+                    </div>
+                </form>
+
+                <p class="auth-footer">
+                    <span data-es="¿Ya tienes cuenta?" data-en="Already have an account?">¿Ya tienes cuenta?</span>
+                    <a href="login.html" data-es="Inicia sesión aquí" data-en="Login here">Inicia sesión aquí</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script src="register.js"></script>
+</body>
+</html>
