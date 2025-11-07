@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoMap - Tu Seguridad es Nuestra Prioridad</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Accessibility Panel -->
+    <div class="accessibility-panel" id="accessibilityPanel">
+        <button class="accessibility-toggle" id="accessibilityToggle" aria-label="Toggle accessibility panel">
+            ⚙️
+        </button>
+        <div class="accessibility-content" id="accessibilityContent">
+            <h3 data-es="Accesibilidad" data-en="Accessibility">Accesibilidad</h3>
+            
+            <div class="accessibility-option">
+                <label data-es="Tema" data-en="Theme">Tema</label>
+                <button id="themeToggle" class="toggle-btn">
+                    <span class="toggle-icon">🌙</span>
+                </button>
+            </div>
+            
+            <div class="accessibility-option">
+                <label data-es="Tamaño de Texto" data-en="Text Size">Tamaño de Texto</label>
+                <select id="fontSizeSelect">
+                    <option value="small" data-es="Pequeño" data-en="Small">Pequeño</option>
+                    <option value="medium" selected data-es="Mediano" data-en="Medium">Mediano</option>
+                    <option value="large" data-es="Grande" data-en="Large">Grande</option>
+                    <option value="xlarge" data-es="Muy Grande" data-en="X-Large">Muy Grande</option>
+                </select>
+            </div>
+            
+            <div class="accessibility-option">
+                <label data-es="Idioma" data-en="Language">Idioma</label>
+                <select id="languageSelect">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">WoMap</a>
+            <div class="nav-links">
+                <a href="login.html" class="nav-link" data-es="Iniciar Sesión" data-en="Login">Iniciar Sesión</a>
+                <a href="register.html" class="nav-link primary-btn" data-es="Registrarse" data-en="Sign Up">Registrarse</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title" data-es="Tu Seguridad es Nuestra Prioridad" data-en="Your Safety is Our Priority">
+                Tu Seguridad es Nuestra Prioridad
+            </h1>
+            <p class="hero-description" data-es="WoMap te ayuda a encontrar las rutas más seguras, conectar con otras mujeres de tu comunidad y compartir experiencias para crear espacios más seguros para todas." data-en="WoMap helps you find the safest routes, connect with other women in your community, and share experiences to create safer spaces for everyone.">
+                WoMap te ayuda a encontrar las rutas más seguras, conectar con otras mujeres de tu comunidad y compartir experiencias para crear espacios más seguros para todas.
+            </p>
+            <div class="hero-buttons">
+                <a href="register.html" class="btn btn-primary" data-es="Comenzar Ahora" data-en="Get Started">Comenzar Ahora</a>
+                <a href="#features" class="btn btn-secondary" data-es="Saber Más" data-en="Learn More">Saber Más</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title" data-es="Características Principales" data-en="Main Features">Características Principales</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3 data-es="Rutas Seguras" data-en="Safe Routes">Rutas Seguras</h3>
+                    <p data-es="Encuentra el camino más seguro basado en datos de la comunidad, no solo el más rápido." data-en="Find the safest path based on community data, not just the fastest.">
+                        Encuentra el camino más seguro basado en datos de la comunidad, no solo el más rápido.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3 data-es="Conexión Comunitaria" data-en="Community Connection">Conexión Comunitaria</h3>
+                    <p data-es="Conecta con mujeres de tu zona con intereses similares para sentirte más segura." data-en="Connect with women in your area with similar interests to feel safer.">
+                        Conecta con mujeres de tu zona con intereses similares para sentirte más segura.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📞</div>
+                    <h3 data-es="Videollamadas" data-en="Video Calls">Videollamadas</h3>
+                    <p data-es="Realiza llamadas o videollamadas con otras usuarias o familiares mediante código." data-en="Make calls or video calls with other users or family members via code.">
+                        Realiza llamadas o videollamadas con otras usuarias o familiares mediante código.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3 data-es="Sistema de Reviews" data-en="Review System">Sistema de Reviews</h3>
+                    <p data-es="Comparte y consulta valoraciones sobre la seguridad de diferentes ubicaciones." data-en="Share and check safety ratings for different locations.">
+                        Comparte y consulta valoraciones sobre la seguridad de diferentes ubicaciones.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3 data-es="Verificación Segura" data-en="Secure Verification">Verificación Segura</h3>
+                    <p data-es="Registro con verificación de identidad mediante DNI para garantizar un espacio seguro." data-en="Registration with ID verification to ensure a safe space.">
+                        Registro con verificación de identidad mediante DNI para garantizar un espacio seguro.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">♿</div>
+                    <h3 data-es="Totalmente Accesible" data-en="Fully Accessible">Totalmente Accesible</h3>
+                    <p data-es="Tema oscuro/claro, ajuste de tamaño de texto y disponible en español e inglés." data-en="Dark/light theme, text size adjustment, and available in Spanish and English.">
+                        Tema oscuro/claro, ajuste de tamaño de texto y disponible en español e inglés.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 data-es="¿Lista para Sentirte más Segura?" data-en="Ready to Feel Safer?">¿Lista para Sentirte más Segura?</h2>
+            <p data-es="Únete a nuestra comunidad de mujeres que se cuidan entre sí" data-en="Join our community of women who look out for each other">
+                Únete a nuestra comunidad de mujeres que se cuidan entre sí
+            </p>
+            <a href="register.html" class="btn btn-primary" data-es="Registrarse Gratis" data-en="Sign Up Free">Registrarse Gratis</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 WoMap. <span data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
