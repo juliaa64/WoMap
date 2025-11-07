@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cuenta - WoMap</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Accessibility Panel moved to bottom right -->
+    <div class="accessibility-panel" id="accessibilityPanel">
+        <button class="accessibility-toggle" id="accessibilityToggle" aria-label="Toggle accessibility panel">⚙️</button>
+        <div class="accessibility-content" id="accessibilityContent">
+            <h3 data-es="Accesibilidad" data-en="Accessibility">Accesibilidad</h3>
+            <div class="accessibility-option">
+                <label data-es="Tema" data-en="Theme">Tema</label>
+                <button id="themeToggle" class="toggle-btn"><span class="toggle-icon">🌙</span></button>
+            </div>
+            <div class="accessibility-option">
+                <label data-es="Tamaño de Texto" data-en="Text Size">Tamaño de Texto</label>
+                <select id="fontSizeSelect">
+                    <option value="small" data-es="Pequeño" data-en="Small">Pequeño</option>
+                    <option value="medium" selected data-es="Mediano" data-en="Medium">Mediano</option>
+                    <option value="large" data-es="Grande" data-en="Large">Grande</option>
+                    <option value="xlarge" data-es="Muy Grande" data-en="X-Large">Muy Grande</option>
+                </select>
+            </div>
+            <div class="accessibility-option">
+                <label data-es="Idioma" data-en="Language">Idioma</label>
+                <select id="languageSelect">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-logo">WoMap</a>
+            <div class="nav-links">
+                <a href="map.html" class="nav-link" data-es="Mapa" data-en="Map">Mapa</a>
+                <a href="community.html" class="nav-link" data-es="Comunidad" data-en="Community">Comunidad</a>
+                <a href="reviews.html" class="nav-link" data-es="Reviews" data-en="Reviews">Reviews</a>
+                <a href="account.html" class="nav-link active" data-es="Cuenta" data-en="Account">Cuenta</a>
+                <button id="logoutBtn" class="nav-link" data-es="Cerrar Sesión" data-en="Logout">Cerrar Sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="dashboard-section">
+        <div class="container">
+            <a href="dashboard.html" class="btn btn-outline" style="margin-bottom: 20px; display: inline-block;">
+                <span data-es="← Volver al Dashboard" data-en="← Back to Dashboard">← Volver al Dashboard</span>
+            </a>
+            
+            <h1 data-es="Mi Cuenta" data-en="My Account">Mi Cuenta</h1>
+            
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 40px;">
+                <!-- Profile Section -->
+                <div>
+                    <div class="auth-card" style="margin-bottom: 30px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                            <h2 data-es="Información Personal" data-en="Personal Information">Información Personal</h2>
+                            <button id="editBtn" class="btn btn-outline btn-sm">
+                                <span data-es="✏️ Editar" data-en="✏️ Edit">✏️ Editar</span>
+                            </button>
+                            <button id="saveBtn" class="btn btn-primary btn-sm" style="display: none;">
+                                <span data-es="💾 Guardar" data-en="💾 Save">💾 Guardar</span>
+                            </button>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-es="Nombre" data-en="Name">Nombre</label>
+                            <input type="text" id="profileName" value="María García" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" value="maria@example.com" readonly>
+                            <p style="font-size: 0.85em; color: var(--text-secondary); margin-top: 5px;" data-es="El email no se puede modificar" data-en="Email cannot be modified">El email no se puede modificar</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-es="Ciudad" data-en="City">Ciudad</label>
+                            <input type="text" id="profileCity" value="Madrid" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-es="Descripción" data-en="Description">Descripción</label>
+                            <textarea id="profileDescription" rows="4" readonly>Amante de las caminatas nocturnas y la seguridad comunitaria. Siempre disponible para ayudar.</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-es="Intereses" data-en="Interests">Intereses</label>
+                            <input type="text" id="profileInterests" value="Senderismo, Fotografía, Comunidad" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Recent Routes -->
+                    <div class="auth-card">
+                        <h2 style="margin-bottom: 20px;" data-es="Últimas Rutas" data-en="Recent Routes">Últimas Rutas</h2>
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <div style="background: var(--background); padding: 15px; border-radius: 8px; border: 1px solid var(--border);">
+                                <p style="font-weight: bold; margin-bottom: 5px;">Plaza Mayor → Retiro</p>
+                                <p style="font-size: 0.9em; color: var(--text-secondary);">
+                                    <span data-es="Hace 2 días • 3.2 km • Seguridad: Alta" data-en="2 days ago • 3.2 km • Safety: High">Hace 2 días • 3.2 km • Seguridad: Alta</span>
+                                </p>
+                            </div>
+                            <div style="background: var(--background); padding: 15px; border-radius: 8px; border: 1px solid var(--border);">
+                                <p style="font-weight: bold; margin-bottom: 5px;">Sol → Callao</p>
+                                <p style="font-size: 0.9em; color: var(--text-secondary);">
+                                    <span data-es="Hace 5 días • 1.5 km • Seguridad: Alta" data-en="5 days ago • 1.5 km • Safety: High">Hace 5 días • 1.5 km • Seguridad: Alta</span>
+                                </p>
+                            </div>
+                            <div style="background: var(--background); padding: 15px; border-radius: 8px; border: 1px solid var(--border);">
+                                <p style="font-weight: bold; margin-bottom: 5px;">Atocha → Lavapiés</p>
+                                <p style="font-size: 0.9em; color: var(--text-secondary);">
+                                    <span data-es="Hace 1 semana • 2.1 km • Seguridad: Media" data-en="1 week ago • 2.1 km • Safety: Medium">Hace 1 semana • 2.1 km • Seguridad: Media</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <!-- Verification Status -->
+                    <div class="auth-card" style="background: linear-gradient(135deg, #f3e8ff 0%, #fce7f3 100%); text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 10px;">🛡️</div>
+                        <h3 style="margin-bottom: 10px;" data-es="Cuenta Verificada" data-en="Verified Account">Cuenta Verificada</h3>
+                        <p style="color: var(--text-secondary);" data-es="Tu identidad ha sido verificada correctamente" data-en="Your identity has been verified">Tu identidad ha sido verificada correctamente</p>
+                    </div>
+
+                    <!-- Call History -->
+                    <div class="auth-card">
+                        <h3 style="margin-bottom: 20px;">
+                            <span data-es="📞 Historial de Llamadas" data-en="📞 Call History">📞 Historial de Llamadas</span>
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <div style="padding-bottom: 15px; border-bottom: 1px solid var(--border);">
+                                <p style="font-weight: bold; font-size: 0.95em;">Ana L.</p>
+                                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                                    <span data-es="Videollamada • 15 min" data-en="Video call • 15 min">Videollamada • 15 min</span>
+                                </p>
+                                <p style="font-size: 0.8em; color: var(--text-secondary);">
+                                    <span data-es="Hace 1 día" data-en="1 day ago">Hace 1 día</span>
+                                </p>
+                            </div>
+                            <div style="padding-bottom: 15px; border-bottom: 1px solid var(--border);">
+                                <p style="font-weight: bold; font-size: 0.95em;">Lucía M.</p>
+                                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                                    <span data-es="Llamada • 8 min" data-en="Call • 8 min">Llamada • 8 min</span>
+                                </p>
+                                <p style="font-size: 0.8em; color: var(--text-secondary);">
+                                    <span data-es="Hace 3 días" data-en="3 days ago">Hace 3 días</span>
+                                </p>
+                            </div>
+                            <div>
+                                <p style="font-weight: bold; font-size: 0.95em;">Carmen R.</p>
+                                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                                    <span data-es="Videollamada • 22 min" data-en="Video call • 22 min">Videollamada • 22 min</span>
+                                </p>
+                                <p style="font-size: 0.8em; color: var(--text-secondary);">
+                                    <span data-es="Hace 1 semana" data-en="1 week ago">Hace 1 semana</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- My Reviews -->
+                    <div class="auth-card">
+                        <h3 style="margin-bottom: 20px;">
+                            <span data-es="💬 Mis Reviews" data-en="💬 My Reviews">💬 Mis Reviews</span>
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <div style="padding-bottom: 15px; border-bottom: 1px solid var(--border);">
+                                <p style="font-weight: bold; font-size: 0.95em;">Calle Alcalá - Noche</p>
+                                <p style="font-size: 0.85em; color: #fbbf24;">★★★★★</p>
+                                <p style="font-size: 0.8em; color: var(--text-secondary);">
+                                    <span data-es="Hace 2 días" data-en="2 days ago">Hace 2 días</span>
+                                </p>
+                            </div>
+                            <div style="padding-bottom: 15px; border-bottom: 1px solid var(--border);">
+                                <p style="font-weight: bold; font-size: 0.95em;">Parque del Retiro - Tarde</p>
+                                <p style="font-size: 0.85em; color: #fbbf24;">★★★★★</p>
+                                <p style="font-size: 0.8em; color: var(--text-secondary);">
+                                    <span data-es="Hace 5 días" data-en="5 days ago">Hace 5 días</span>
+                                </p>
+                            </div>
+                            <div>
+                                <p style="font-weight: bold; font-size: 0.95em;">Metro Callao - Noche</p>
+                                <p style="font-size: 0.85em; color: #fbbf24;">★★★☆☆</p>
+                                <p style="font-size: 0.8em; color: var(--text-secondary);">
+                                    <span data-es="Hace 1 semana" data-en="1 week ago">Hace 1 semana</span>
+                                </p>
+                            </div>
+                        </div>
+                        <a href="reviews.html">
+                            <button class="btn btn-outline full-width" style="margin-top: 15px;" data-es="Ver todas" data-en="View all">Ver todas</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        // Check if user is logged in
+        if (!localStorage.getItem('womap_user')) {
+            window.location.href = 'login.html';
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('womap_user');
+            window.location.href = 'index.html';
+        });
+
+        // Edit profile functionality
+        const editBtn = document.getElementById('editBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const profileName = document.getElementById('profileName');
+        const profileCity = document.getElementById('profileCity');
+        const profileDescription = document.getElementById('profileDescription');
+        const profileInterests = document.getElementById('profileInterests');
+
+        editBtn.addEventListener('click', function() {
+            editBtn.style.display = 'none';
+            saveBtn.style.display = 'inline-block';
+            profileName.removeAttribute('readonly');
+            profileCity.removeAttribute('readonly');
+            profileDescription.removeAttribute('readonly');
+            profileInterests.removeAttribute('readonly');
+        });
+
+        saveBtn.addEventListener('click', function() {
+            saveBtn.style.display = 'none';
+            editBtn.style.display = 'inline-block';
+            profileName.setAttribute('readonly', true);
+            profileCity.setAttribute('readonly', true);
+            profileDescription.setAttribute('readonly', true);
+            profileInterests.setAttribute('readonly', true);
+            
+            // Save to localStorage
+            const profile = {
+                name: profileName.value,
+                city: profileCity.value,
+                description: profileDescription.value,
+                interests: profileInterests.value
+            };
+            localStorage.setItem('womap_profile', JSON.stringify(profile));
+        });
+    </script>
+</body>
+</html>
