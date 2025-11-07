@@ -49,9 +49,10 @@ body.font-xlarge {
 }
 
 /* Accessibility Panel */
+/* Moved accessibility panel to bottom right */
 .accessibility-panel {
   position: fixed;
-  top: 20px;
+  bottom: 20px;
   right: 20px;
   z-index: 1000;
 }
@@ -73,10 +74,11 @@ body.font-xlarge {
   transform: scale(1.1);
 }
 
+/* Changed content position to open upwards */
 .accessibility-content {
   display: none;
   position: absolute;
-  top: 60px;
+  bottom: 60px;
   right: 0;
   background: var(--surface);
   border: 1px solid var(--border);
