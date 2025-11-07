@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - WoMap</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Accessibility Panel -->
+    <div class="accessibility-panel" id="accessibilityPanel">
+        <button class="accessibility-toggle" id="accessibilityToggle" aria-label="Toggle accessibility panel">⚙️</button>
+        <div class="accessibility-content" id="accessibilityContent">
+            <h3 data-es="Accesibilidad" data-en="Accessibility">Accesibilidad</h3>
+            <div class="accessibility-option">
+                <label data-es="Tema" data-en="Theme">Tema</label>
+                <button id="themeToggle" class="toggle-btn"><span class="toggle-icon">🌙</span></button>
+            </div>
+            <div class="accessibility-option">
+                <label data-es="Tamaño de Texto" data-en="Text Size">Tamaño de Texto</label>
+                <select id="fontSizeSelect">
+                    <option value="small" data-es="Pequeño" data-en="Small">Pequeño</option>
+                    <option value="medium" selected data-es="Mediano" data-en="Medium">Mediano</option>
+                    <option value="large" data-es="Grande" data-en="Large">Grande</option>
+                    <option value="xlarge" data-es="Muy Grande" data-en="X-Large">Muy Grande</option>
+                </select>
+            </div>
+            <div class="accessibility-option">
+                <label data-es="Idioma" data-en="Language">Idioma</label>
+                <select id="languageSelect">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-logo">WoMap</a>
+            <div class="nav-links">
+                <a href="map.html" class="nav-link" data-es="Mapa" data-en="Map">Mapa</a>
+                <a href="community.html" class="nav-link" data-es="Comunidad" data-en="Community">Comunidad</a>
+                <a href="reviews.html" class="nav-link active" data-es="Reviews" data-en="Reviews">Reviews</a>
+                <button id="logoutBtn" class="nav-link" data-es="Cerrar Sesión" data-en="Logout">Cerrar Sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="reviews-section">
+        <div class="container">
+            <h1 data-es="Reviews de Seguridad" data-en="Safety Reviews">Reviews de Seguridad</h1>
+
+            <!-- Add Review Form -->
+            <div class="review-form-card">
+                <h2 data-es="Añadir Review" data-en="Add Review">Añadir Review</h2>
+                <form id="reviewForm">
+                    <div class="form-group">
+                        <label for="location" data-es="Ubicación" data-en="Location">Ubicación</label>
+                        <input type="text" id="location" placeholder="Calle o zona" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="timeOfDay" data-es="Hora del día" data-en="Time of day">Hora del día</label>
+                        <select id="timeOfDay" required>
+                            <option value="morning" data-es="Mañana (6:00-12:00)" data-en="Morning (6:00-12:00)">Mañana (6:00-12:00)</option>
+                            <option value="afternoon" data-es="Tarde (12:00-18:00)" data-en="Afternoon (12:00-18:00)">Tarde (12:00-18:00)</option>
+                            <option value="evening" data-es="Noche (18:00-24:00)" data-en="Evening (18:00-24:00)">Noche (18:00-24:00)</option>
+                            <option value="night" data-es="Madrugada (00:00-6:00)" data-en="Night (00:00-6:00)">Madrugada (00:00-6:00)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="safetyRating" data-es="Valoración de Seguridad" data-en="Safety Rating">Valoración de Seguridad</label>
+                        <div class="rating-input">
+                            <input type="radio" name="rating" id="star5" value="5" required>
+                            <label for="star5">⭐</label>
+                            <input type="radio" name="rating" id="star4" value="4">
+                            <label for="star4">⭐</label>
+                            <input type="radio" name="rating" id="star3" value="3">
+                            <label for="star3">⭐</label>
+                            <input type="radio" name="rating" id="star2" value="2">
+                            <label for="star2">⭐</label>
+                            <input type="radio" name="rating" id="star1" value="1">
+                            <label for="star1">⭐</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comment" data-es="Comentario" data-en="Comment">Comentario</label>
+                        <textarea id="comment" rows="4" placeholder="Describe tu experiencia..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" data-es="Publicar Review" data-en="Post Review">Publicar Review</button>
+                </form>
+            </div>
+
+            <!-- Reviews List -->
+            <div class="reviews-list">
+                <h2 data-es="Reviews Recientes" data-en="Recent Reviews">Reviews Recientes</h2>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div>
+                            <h3>Calle Gran Vía, Madrid</h3>
+                            <div class="review-meta">
+                                <span class="review-rating">⭐⭐⭐⭐⭐</span>
+                                <span class="review-time" data-es="Tarde" data-en="Afternoon">Tarde</span>
+                                <span class="review-date">Hace 2 días</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="review-content" data-es="Zona muy transitada y bien iluminada. Me sentí completamente segura caminando sola. Muchas tiendas abiertas y gente alrededor." data-en="Very busy and well-lit area. I felt completely safe walking alone. Many shops open and people around.">
+                        Zona muy transitada y bien iluminada. Me sentí completamente segura caminando sola. Muchas tiendas abiertas y gente alrededor.
+                    </p>
+                    <div class="review-author">- María C.</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div>
+                            <h3>Parque del Retiro, Madrid</h3>
+                            <div class="review-meta">
+                                <span class="review-rating">⭐⭐⭐⭐</span>
+                                <span class="review-time" data-es="Mañana" data-en="Morning">Mañana</span>
+                                <span class="review-date">Hace 5 días</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="review-content" data-es="Perfecto para correr por la mañana. Muchas personas haciendo deporte. Los caminos principales están muy bien." data-en="Perfect for morning running. Many people exercising. Main paths are very good.">
+                        Perfecto para correr por la mañana. Muchas personas haciendo deporte. Los caminos principales están muy bien.
+                    </p>
+                    <div class="review-author">- Laura G.</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div>
+                            <h3>Metro Línea 1 - Sol</h3>
+                            <div class="review-meta">
+                                <span class="review-rating">⭐⭐⭐</span>
+                                <span class="review-time" data-es="Noche" data-en="Evening">Noche</span>
+                                <span class="review-date">Hace 1 semana</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="review-content" data-es="Estación concurrida pero a veces hay zonas con poca gente. Recomiendo viajar en vagones centrales." data-en="Busy station but sometimes there are areas with few people. I recommend traveling in central cars.">
+                        Estación concurrida pero a veces hay zonas con poca gente. Recomiendo viajar en vagones centrales.
+                    </p>
+                    <div class="review-author">- Ana S.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        if (!localStorage.getItem('womap_user')) {
+            window.location.href = 'login.html';
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('womap_user');
+            window.location.href = 'index.html';
+        });
+
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const lang = localStorage.getItem('womap_language') || 'es';
+            const message = lang === 'es' 
+                ? 'Review publicada correctamente' 
+                : 'Review posted successfully';
+            alert(message);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
