@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutas Seguras - WoMap</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Accessibility Panel -->
+    <div class="accessibility-panel" id="accessibilityPanel">
+        <button class="accessibility-toggle" id="accessibilityToggle" aria-label="Toggle accessibility panel">⚙️</button>
+        <div class="accessibility-content" id="accessibilityContent">
+            <h3 data-es="Accesibilidad" data-en="Accessibility">Accesibilidad</h3>
+            <div class="accessibility-option">
+                <label data-es="Tema" data-en="Theme">Tema</label>
+                <button id="themeToggle" class="toggle-btn"><span class="toggle-icon">🌙</span></button>
+            </div>
+            <div class="accessibility-option">
+                <label data-es="Tamaño de Texto" data-en="Text Size">Tamaño de Texto</label>
+                <select id="fontSizeSelect">
+                    <option value="small" data-es="Pequeño" data-en="Small">Pequeño</option>
+                    <option value="medium" selected data-es="Mediano" data-en="Medium">Mediano</option>
+                    <option value="large" data-es="Grande" data-en="Large">Grande</option>
+                    <option value="xlarge" data-es="Muy Grande" data-en="X-Large">Muy Grande</option>
+                </select>
+            </div>
+            <div class="accessibility-option">
+                <label data-es="Idioma" data-en="Language">Idioma</label>
+                <select id="languageSelect">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-logo">WoMap</a>
+            <div class="nav-links">
+                <a href="map.html" class="nav-link active" data-es="Mapa" data-en="Map">Mapa</a>
+                <a href="community.html" class="nav-link" data-es="Comunidad" data-en="Community">Comunidad</a>
+                <a href="reviews.html" class="nav-link" data-es="Reviews" data-en="Reviews">Reviews</a>
+                <button id="logoutBtn" class="nav-link" data-es="Cerrar Sesión" data-en="Logout">Cerrar Sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="map-section">
+        <div class="map-container">
+            <div class="map-sidebar">
+                <h2 data-es="Buscar Ruta Segura" data-en="Find Safe Route">Buscar Ruta Segura</h2>
+                
+                <form id="routeForm" class="route-form">
+                    <div class="form-group">
+                        <label for="origin" data-es="Origen" data-en="Origin">Origen</label>
+                        <input type="text" id="origin" placeholder="Calle Principal, 123" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="destination" data-es="Destino" data-en="Destination">Destino</label>
+                        <input type="text" id="destination" placeholder="Avenida Central, 456" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary full-width" data-es="Buscar Ruta" data-en="Find Route">
+                        Buscar Ruta
+                    </button>
+                </form>
+
+                <div id="routeInfo" class="route-info" style="display: none;">
+                    <h3 data-es="Información de la Ruta" data-en="Route Information">Información de la Ruta</h3>
+                    <div class="route-stat">
+                        <span data-es="Nivel de Seguridad:" data-en="Safety Level:">Nivel de Seguridad:</span>
+                        <strong class="safety-high" data-es="Alto" data-en="High">Alto</strong>
+                    </div>
+                    <div class="route-stat">
+                        <span data-es="Distancia:" data-en="Distance:">Distancia:</span>
+                        <strong>2.3 km</strong>
+                    </div>
+                    <div class="route-stat">
+                        <span data-es="Tiempo estimado:" data-en="Estimated time:">Tiempo estimado:</span>
+                        <strong>28 min</strong>
+                    </div>
+                    <div class="route-stat">
+                        <span data-es="Valoraciones:" data-en="Reviews:">Valoraciones:</span>
+                        <strong>⭐ 4.8 (156 reviews)</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-display">
+                <div class="map-placeholder">
+                    <p data-es="🗺️ El mapa interactivo se mostrará aquí" data-en="🗺️ Interactive map will be displayed here">
+                        🗺️ El mapa interactivo se mostrará aquí
+                    </p>
+                    <p class="map-note" data-es="(Requiere integración con Google Maps API o similar)" data-en="(Requires integration with Google Maps API or similar)">
+                        (Requiere integración con Google Maps API o similar)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        if (!localStorage.getItem('womap_user')) {
+            window.location.href = 'login.html';
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('womap_user');
+            window.location.href = 'index.html';
+        });
+
+        document.getElementById('routeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('routeInfo').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
