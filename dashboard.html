@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Accessibility Panel -->
+    <!-- Moved Accessibility Panel to bottom right -->
     <div class="accessibility-panel" id="accessibilityPanel">
         <button class="accessibility-toggle" id="accessibilityToggle" aria-label="Toggle accessibility panel">⚙️</button>
         <div class="accessibility-content" id="accessibilityContent">
@@ -43,6 +43,8 @@
                 <a href="map.html" class="nav-link" data-es="Mapa" data-en="Map">Mapa</a>
                 <a href="community.html" class="nav-link" data-es="Comunidad" data-en="Community">Comunidad</a>
                 <a href="reviews.html" class="nav-link" data-es="Reviews" data-en="Reviews">Reviews</a>
+                <!-- Added Account link -->
+                <a href="account.html" class="nav-link" data-es="Cuenta" data-en="Account">Cuenta</a>
                 <button id="logoutBtn" class="nav-link" data-es="Cerrar Sesión" data-en="Logout">Cerrar Sesión</button>
             </div>
         </div>
@@ -74,6 +76,15 @@
                     <h3 data-es="Reviews" data-en="Reviews">Reviews</h3>
                     <p data-es="Comparte y consulta valoraciones de seguridad" data-en="Share and check safety reviews">
                         Comparte y consulta valoraciones de seguridad
+                    </p>
+                </a>
+
+                <!-- Replaced Settings with Account -->
+                <a href="account.html" class="dashboard-card">
+                    <div class="dashboard-icon">👤</div>
+                    <h3 data-es="Mi Cuenta" data-en="My Account">Mi Cuenta</h3>
+                    <p data-es="Gestiona tu perfil y datos" data-en="Manage your profile and data">
+                        Gestiona tu perfil y datos
                     </p>
                 </a>
             </div>
