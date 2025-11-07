@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad - WoMap</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Accessibility Panel -->
+    <div class="accessibility-panel" id="accessibilityPanel">
+        <button class="accessibility-toggle" id="accessibilityToggle" aria-label="Toggle accessibility panel">⚙️</button>
+        <div class="accessibility-content" id="accessibilityContent">
+            <h3 data-es="Accesibilidad" data-en="Accessibility">Accesibilidad</h3>
+            <div class="accessibility-option">
+                <label data-es="Tema" data-en="Theme">Tema</label>
+                <button id="themeToggle" class="toggle-btn"><span class="toggle-icon">🌙</span></button>
+            </div>
+            <div class="accessibility-option">
+                <label data-es="Tamaño de Texto" data-en="Text Size">Tamaño de Texto</label>
+                <select id="fontSizeSelect">
+                    <option value="small" data-es="Pequeño" data-en="Small">Pequeño</option>
+                    <option value="medium" selected data-es="Mediano" data-en="Medium">Mediano</option>
+                    <option value="large" data-es="Grande" data-en="Large">Grande</option>
+                    <option value="xlarge" data-es="Muy Grande" data-en="X-Large">Muy Grande</option>
+                </select>
+            </div>
+            <div class="accessibility-option">
+                <label data-es="Idioma" data-en="Language">Idioma</label>
+                <select id="languageSelect">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-logo">WoMap</a>
+            <div class="nav-links">
+                <a href="map.html" class="nav-link" data-es="Mapa" data-en="Map">Mapa</a>
+                <a href="community.html" class="nav-link active" data-es="Comunidad" data-en="Community">Comunidad</a>
+                <a href="reviews.html" class="nav-link" data-es="Reviews" data-en="Reviews">Reviews</a>
+                <button id="logoutBtn" class="nav-link" data-es="Cerrar Sesión" data-en="Logout">Cerrar Sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="community-section">
+        <div class="container">
+            <h1 data-es="Conexiones Comunitarias" data-en="Community Connections">Conexiones Comunitarias</h1>
+
+            <!-- Connection Options -->
+            <div class="connection-options">
+                <div class="connection-card">
+                    <h3 data-es="Conectar por Cercanía" data-en="Connect Nearby">Conectar por Cercanía</h3>
+                    <p data-es="Encuentra mujeres cerca de tu ubicación" data-en="Find women near your location">
+                        Encuentra mujeres cerca de tu ubicación
+                    </p>
+                    <button class="btn btn-primary" onclick="showNearbyUsers()" data-es="Buscar" data-en="Search">Buscar</button>
+                </div>
+
+                <div class="connection-card">
+                    <h3 data-es="Código de Conexión" data-en="Connection Code">Código de Conexión</h3>
+                    <p data-es="Conecta con amigas o familiares usando un código" data-en="Connect with friends or family using a code">
+                        Conecta con amigas o familiares usando un código
+                    </p>
+                    <div class="code-group">
+                        <input type="text" id="connectionCode" placeholder="Ingresa el código">
+                        <button class="btn btn-secondary" onclick="connectWithCode()" data-es="Conectar" data-en="Connect">Conectar</button>
+                    </div>
+                    <button class="btn btn-outline" onclick="generateCode()" data-es="Generar mi código" data-en="Generate my code">
+                        Generar mi código
+                    </button>
+                    <div id="myCode" style="display: none; margin-top: 10px;">
+                        <strong data-es="Tu código:" data-en="Your code:">Tu código:</strong> <span id="codeDisplay"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User List -->
+            <div id="userList" class="user-list" style="display: none;">
+                <h2 data-es="Usuarias Cercanas" data-en="Nearby Users">Usuarias Cercanas</h2>
+                <div class="users-grid">
+                    <div class="user-card">
+                        <div class="user-avatar">MC</div>
+                        <h3>María Cano</h3>
+                        <p class="user-location">📍 Madrid Centro</p>
+                        <p class="user-interests" data-es="Intereses: deportes, lectura" data-en="Interests: sports, reading">
+                            Intereses: deportes, lectura
+                        </p>
+                        <div class="user-actions">
+                            <button class="btn btn-sm btn-primary" onclick="startCall('video')" data-es="📹 Video" data-en="📹 Video">
+                                📹 Video
+                            </button>
+                            <button class="btn btn-sm btn-secondary" onclick="startCall('audio')" data-es="📞 Llamar" data-en="📞 Call">
+                                📞 Llamar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="user-card">
+                        <div class="user-avatar">LG</div>
+                        <h3>Laura García</h3>
+                        <p class="user-location">📍 Madrid Centro</p>
+                        <p class="user-interests" data-es="Intereses: música, cine" data-en="Interests: music, cinema">
+                            Intereses: música, cine
+                        </p>
+                        <div class="user-actions">
+                            <button class="btn btn-sm btn-primary" onclick="startCall('video')" data-es="📹 Video" data-en="📹 Video">
+                                📹 Video
+                            </button>
+                            <button class="btn btn-sm btn-secondary" onclick="startCall('audio')" data-es="📞 Llamar" data-en="📞 Call">
+                                📞 Llamar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="user-card">
+                        <div class="user-avatar">AS</div>
+                        <h3>Ana Sánchez</h3>
+                        <p class="user-location">📍 Madrid Norte</p>
+                        <p class="user-interests" data-es="Intereses: arte, viajes" data-en="Interests: art, travel">
+                            Intereses: arte, viajes
+                        </p>
+                        <div class="user-actions">
+                            <button class="btn btn-sm btn-primary" onclick="startCall('video')" data-es="📹 Video" data-en="📹 Video">
+                                📹 Video
+                            </button>
+                            <button class="btn btn-sm btn-secondary" onclick="startCall('audio')" data-es="📞 Llamar" data-en="📞 Call">
+                                📞 Llamar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        if (!localStorage.getItem('womap_user')) {
+            window.location.href = 'login.html';
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('womap_user');
+            window.location.href = 'index.html';
+        });
+
+        function showNearbyUsers() {
+            document.getElementById('userList').style.display = 'block';
+        }
+
+        function generateCode() {
+            const code = Math.random().toString(36).substring(2, 8).toUpperCase();
+            document.getElementById('codeDisplay').textContent = code;
+            document.getElementById('myCode').style.display = 'block';
+        }
+
+        function connectWithCode() {
+            const code = document.getElementById('connectionCode').value;
+            if (code) {
+                const lang = localStorage.getItem('womap_language') || 'es';
+                const message = lang === 'es' 
+                    ? `Conectando con código: ${code}` 
+                    : `Connecting with code: ${code}`;
+                alert(message);
+            }
+        }
+
+        function startCall(type) {
+            const lang = localStorage.getItem('womap_language') || 'es';
+            const callType = type === 'video' 
+                ? (lang === 'es' ? 'videollamada' : 'video call')
+                : (lang === 'es' ? 'llamada de audio' : 'audio call');
+            const message = lang === 'es' 
+                ? `Iniciando ${callType}...` 
+                : `Starting ${callType}...`;
+            alert(message);
+        }
+    </script>
+</body>
+</html>
