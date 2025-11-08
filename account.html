@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Cuenta - WoMap</title>
+    <!-- Added favicon -->
+    <link rel="icon" type="image/png" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo_final-67k6gvntnpyybZBRQTHzo5q4HXed8b.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -38,17 +40,19 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="dashboard.html" class="nav-logo">WoMap</a>
+            <!-- Added logo image -->
+            <a href="dashboard.html" class="nav-logo">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo_final-67k6gvntnpyybZBRQTHzo5q4HXed8b.png" alt="WoMap Logo" class="logo-image">
+                WoMap
+            </a>
             <div class="nav-links">
                 <a href="map.html" class="nav-link" data-es="Mapa" data-en="Map">Mapa</a>
                 <a href="community.html" class="nav-link" data-es="Comunidad" data-en="Community">Comunidad</a>
                 <a href="reviews.html" class="nav-link" data-es="Reviews" data-en="Reviews">Reviews</a>
-                <div class="account-dropdown" id="accountDropdown">
-                    <button class="account-btn active" id="accountBtn" aria-label="Account menu">
-                        <span class="account-icon">👤</span>
-                    </button>
-                    <div class="account-menu" id="accountMenu"></div>
-                </div>
+                <!-- Account icon links to dashboard, active state -->
+                <a href="dashboard.html" class="account-btn active" aria-label="Account">
+                    <span class="account-icon">👤</span>
+                </a>
             </div>
         </div>
     </nav>
@@ -67,6 +71,7 @@
                     <div class="auth-card" style="margin-bottom: 30px;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
                             <h2 data-es="Información Personal" data-en="Personal Information">Información Personal</h2>
+                            <!-- Edit functionality with save button -->
                             <button id="editBtn" class="btn btn-outline btn-sm">
                                 <span data-es="✏️ Editar" data-en="✏️ Edit">✏️ Editar</span>
                             </button>
@@ -221,21 +226,6 @@
                             <button class="btn btn-outline full-width" style="margin-top: 15px;" data-es="Ver todas" data-en="View all">Ver todas</button>
                         </a>
                     </div>
-
-                    <!-- Level and Points System -->
-                    <div class="auth-card" style="background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%); color: white; text-align: center;">
-                        <div style="font-size: 3rem; margin-bottom: 10px;">⭐</div>
-                        <h3 style="margin-bottom: 10px; color: white;" data-es="Nivel 5 - Protectora" data-en="Level 5 - Protector">Nivel 5 - Protectora</h3>
-                        <div class="level-progress">
-                            <div class="level-progress-bar" style="width: 65%;"></div>
-                        </div>
-                        <p style="margin-top: 10px; color: rgba(255,255,255,0.9); font-size: 0.9em;">
-                            <span data-es="650 / 1000 puntos" data-en="650 / 1000 points">650 / 1000 puntos</span>
-                        </p>
-                        <p style="margin-top: 5px; color: rgba(255,255,255,0.8); font-size: 0.85em;">
-                            <span data-es="¡Sigue conectando para alcanzar el nivel 6!" data-en="Keep connecting to reach level 6!">¡Sigue conectando para alcanzar el nivel 6!</span>
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -278,17 +268,10 @@
 
     <script src="script.js"></script>
     <script>
-        // Check if user is logged in
         if (!localStorage.getItem('womap_user')) {
             window.location.href = 'login.html';
         }
 
-        document.getElementById('logoutBtn').addEventListener('click', function() {
-            localStorage.removeItem('womap_user');
-            window.location.href = 'index.html';
-        });
-
-        // Edit profile functionality
         const editBtn = document.getElementById('editBtn');
         const saveBtn = document.getElementById('saveBtn');
         const changePhotoBtn = document.getElementById('changePhotoBtn');
@@ -308,6 +291,11 @@
             profileCity.removeAttribute('readonly');
             profileDescription.removeAttribute('readonly');
             profileInterests.removeAttribute('readonly');
+            
+            // Add editing visual feedback
+            [profileName, profileAge, profileCity, profileDescription, profileInterests].forEach(field => {
+                field.style.borderColor = 'var(--primary)';
+            });
         });
 
         saveBtn.addEventListener('click', function() {
@@ -320,6 +308,11 @@
             profileDescription.setAttribute('readonly', true);
             profileInterests.setAttribute('readonly', true);
             
+            // Remove editing visual feedback
+            [profileName, profileAge, profileCity, profileDescription, profileInterests].forEach(field => {
+                field.style.borderColor = '';
+            });
+            
             // Save to localStorage
             const profile = {
                 name: profileName.value,
@@ -329,9 +322,12 @@
                 interests: profileInterests.value
             };
             localStorage.setItem('womap_profile', JSON.stringify(profile));
+            
+            const lang = localStorage.getItem('womap_language') || 'es';
+            const message = lang === 'es' ? 'Perfil actualizado correctamente' : 'Profile updated successfully';
+            alert(message);
         });
 
-        // Profile picture change
         changePhotoBtn.addEventListener('click', function() {
             accountProfilePicture.click();
         });
@@ -349,6 +345,17 @@
                 reader.readAsDataURL(file);
             }
         });
+
+        // Load saved profile
+        const savedProfile = localStorage.getItem('womap_profile');
+        if (savedProfile) {
+            const profile = JSON.parse(savedProfile);
+            profileName.value = profile.name;
+            profileAge.value = profile.age;
+            profileCity.value = profile.city;
+            profileDescription.value = profile.description;
+            profileInterests.value = profile.interests;
+        }
 
         // Load saved profile picture
         const savedPicture = localStorage.getItem('womap_profile_picture');
