@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reviews - WoMap</title>
+    <!-- Added favicon -->
+    <link rel="icon" type="image/png" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo_final-67k6gvntnpyybZBRQTHzo5q4HXed8b.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -38,12 +40,19 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="dashboard.html" class="nav-logo">WoMap</a>
+            <!-- Added logo image -->
+            <a href="dashboard.html" class="nav-logo">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo_final-67k6gvntnpyybZBRQTHzo5q4HXed8b.png" alt="WoMap Logo" class="logo-image">
+                WoMap
+            </a>
             <div class="nav-links">
                 <a href="map.html" class="nav-link" data-es="Mapa" data-en="Map">Mapa</a>
                 <a href="community.html" class="nav-link" data-es="Comunidad" data-en="Community">Comunidad</a>
                 <a href="reviews.html" class="nav-link active" data-es="Reviews" data-en="Reviews">Reviews</a>
-                <button id="logoutBtn" class="nav-link" data-es="Cerrar Sesión" data-en="Logout">Cerrar Sesión</button>
+                <!-- Added account icon button -->
+                <a href="dashboard.html" class="account-btn" aria-label="Account">
+                    <span class="account-icon">👤</span>
+                </a>
             </div>
         </div>
     </nav>
@@ -153,6 +162,51 @@
             </div>
         </div>
     </section>
+
+    <!-- Added company footer -->
+    <footer class="company-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 class="footer-title">WoMap</h3>
+                    <p class="footer-text" data-es="Creando espacios seguros para todas las mujeres, juntas." data-en="Creating safe spaces for all women, together.">
+                        Creando espacios seguros para todas las mujeres, juntas.
+                    </p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-subtitle" data-es="Contacto" data-en="Contact">Contacto</h4>
+                    <p class="footer-text">
+                        Email: contacto@womap.com<br>
+                        <span data-es="Teléfono:" data-en="Phone:">Teléfono:</span> +34 900 123 456<br>
+                        <span data-es="Dirección:" data-en="Address:">Dirección:</span> Calle Seguridad 123, Madrid
+                    </p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-subtitle" data-es="Información Legal" data-en="Legal Information">Información Legal</h4>
+                    <p class="footer-text">
+                        WoMap S.L.<br>
+                        CIF: B-12345678<br>
+                        <span data-es="Registro Mercantil de Madrid" data-en="Madrid Commercial Registry">Registro Mercantil de Madrid</span>
+                    </p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-subtitle" data-es="Síguenos" data-en="Follow Us">Síguenos</h4>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">Facebook</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 WoMap. <span data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span></p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
     <script>
