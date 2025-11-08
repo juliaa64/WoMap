@@ -43,8 +43,12 @@
                 <a href="map.html" class="nav-link" data-es="Mapa" data-en="Map">Mapa</a>
                 <a href="community.html" class="nav-link" data-es="Comunidad" data-en="Community">Comunidad</a>
                 <a href="reviews.html" class="nav-link" data-es="Reviews" data-en="Reviews">Reviews</a>
-                <a href="account.html" class="nav-link active" data-es="Cuenta" data-en="Account">Cuenta</a>
-                <button id="logoutBtn" class="nav-link" data-es="Cerrar Sesión" data-en="Logout">Cerrar Sesión</button>
+                <div class="account-dropdown" id="accountDropdown">
+                    <button class="account-btn active" id="accountBtn" aria-label="Account menu">
+                        <span class="account-icon">👤</span>
+                    </button>
+                    <div class="account-menu" id="accountMenu"></div>
+                </div>
             </div>
         </div>
     </nav>
@@ -72,6 +76,17 @@
                         </div>
 
                         <div class="form-group">
+                            <label data-es="Foto de Perfil" data-en="Profile Picture">Foto de Perfil</label>
+                            <div class="profile-picture-upload">
+                                <div class="profile-picture-preview large" id="accountProfilePicturePreview">
+                                    <span class="preview-icon">👤</span>
+                                </div>
+                                <input type="file" id="accountProfilePicture" accept="image/*" style="display: none;">
+                                <button type="button" id="changePhotoBtn" class="btn btn-outline btn-sm" style="display: none;" data-es="Cambiar Foto" data-en="Change Photo">Cambiar Foto</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label data-es="Nombre" data-en="Name">Nombre</label>
                             <input type="text" id="profileName" value="María García" readonly>
                         </div>
@@ -80,6 +95,11 @@
                             <label>Email</label>
                             <input type="email" value="maria@example.com" readonly>
                             <p style="font-size: 0.85em; color: var(--text-secondary); margin-top: 5px;" data-es="El email no se puede modificar" data-en="Email cannot be modified">El email no se puede modificar</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label data-es="Edad" data-en="Age">Edad</label>
+                            <input type="number" id="profileAge" value="28" readonly>
                         </div>
 
                         <div class="form-group">
@@ -201,14 +221,64 @@
                             <button class="btn btn-outline full-width" style="margin-top: 15px;" data-es="Ver todas" data-en="View all">Ver todas</button>
                         </a>
                     </div>
+
+                    <!-- Level and Points System -->
+                    <div class="auth-card" style="background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%); color: white; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 10px;">⭐</div>
+                        <h3 style="margin-bottom: 10px; color: white;" data-es="Nivel 5 - Protectora" data-en="Level 5 - Protector">Nivel 5 - Protectora</h3>
+                        <div class="level-progress">
+                            <div class="level-progress-bar" style="width: 65%;"></div>
+                        </div>
+                        <p style="margin-top: 10px; color: rgba(255,255,255,0.9); font-size: 0.9em;">
+                            <span data-es="650 / 1000 puntos" data-en="650 / 1000 points">650 / 1000 puntos</span>
+                        </p>
+                        <p style="margin-top: 5px; color: rgba(255,255,255,0.8); font-size: 0.85em;">
+                            <span data-es="¡Sigue conectando para alcanzar el nivel 6!" data-en="Keep connecting to reach level 6!">¡Sigue conectando para alcanzar el nivel 6!</span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Company Footer -->
+    <footer class="company-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 class="footer-title">WoMap</h3>
+                    <p class="footer-text" data-es="Creando espacios seguros para todas las mujeres, juntas." data-en="Creating safe spaces for all women, together.">
+                        Creando espacios seguros para todas las mujeres, juntas.
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-subtitle" data-es="Contacto" data-en="Contact">Contacto</h4>
+                    <p class="footer-text">
+                        Email: contacto@womap.com<br>
+                        <span data-es="Teléfono:" data-en="Phone:">Teléfono:</span> +34 900 123 456
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-subtitle" data-es="Información Legal" data-en="Legal Information">Información Legal</h4>
+                    <p class="footer-text">WoMap S.L. | CIF: B-12345678</p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-subtitle" data-es="Síguenos" data-en="Follow Us">Síguenos</h4>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 WoMap. <span data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span></p>
+            </div>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
     <script>
-        // Check if user is logged in 
+        // Check if user is logged in
         if (!localStorage.getItem('womap_user')) {
             window.location.href = 'login.html';
         }
@@ -221,15 +291,20 @@
         // Edit profile functionality
         const editBtn = document.getElementById('editBtn');
         const saveBtn = document.getElementById('saveBtn');
+        const changePhotoBtn = document.getElementById('changePhotoBtn');
         const profileName = document.getElementById('profileName');
+        const profileAge = document.getElementById('profileAge');
         const profileCity = document.getElementById('profileCity');
         const profileDescription = document.getElementById('profileDescription');
         const profileInterests = document.getElementById('profileInterests');
+        const accountProfilePicture = document.getElementById('accountProfilePicture');
 
         editBtn.addEventListener('click', function() {
             editBtn.style.display = 'none';
             saveBtn.style.display = 'inline-block';
+            changePhotoBtn.style.display = 'inline-block';
             profileName.removeAttribute('readonly');
+            profileAge.removeAttribute('readonly');
             profileCity.removeAttribute('readonly');
             profileDescription.removeAttribute('readonly');
             profileInterests.removeAttribute('readonly');
@@ -237,8 +312,10 @@
 
         saveBtn.addEventListener('click', function() {
             saveBtn.style.display = 'none';
+            changePhotoBtn.style.display = 'none';
             editBtn.style.display = 'inline-block';
             profileName.setAttribute('readonly', true);
+            profileAge.setAttribute('readonly', true);
             profileCity.setAttribute('readonly', true);
             profileDescription.setAttribute('readonly', true);
             profileInterests.setAttribute('readonly', true);
@@ -246,12 +323,40 @@
             // Save to localStorage
             const profile = {
                 name: profileName.value,
+                age: profileAge.value,
                 city: profileCity.value,
                 description: profileDescription.value,
                 interests: profileInterests.value
             };
             localStorage.setItem('womap_profile', JSON.stringify(profile));
         });
+
+        // Profile picture change
+        changePhotoBtn.addEventListener('click', function() {
+            accountProfilePicture.click();
+        });
+
+        accountProfilePicture.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const preview = document.getElementById('accountProfilePicturePreview');
+                    preview.style.backgroundImage = `url(${event.target.result})`;
+                    preview.innerHTML = '';
+                    localStorage.setItem('womap_profile_picture', event.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Load saved profile picture
+        const savedPicture = localStorage.getItem('womap_profile_picture');
+        if (savedPicture) {
+            const preview = document.getElementById('accountProfilePicturePreview');
+            preview.style.backgroundImage = `url(${savedPicture})`;
+            preview.innerHTML = '';
+        }
     </script>
 </body>
 </html>
