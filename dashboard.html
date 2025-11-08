@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -43,9 +43,13 @@
                 <a href="map.html" class="nav-link" data-es="Mapa" data-en="Map">Mapa</a>
                 <a href="community.html" class="nav-link" data-es="Comunidad" data-en="Community">Comunidad</a>
                 <a href="reviews.html" class="nav-link" data-es="Reviews" data-en="Reviews">Reviews</a>
-                <!-- Added Account link -->
-                <a href="account.html" class="nav-link" data-es="Cuenta" data-en="Account">Cuenta</a>
-                <button id="logoutBtn" class="nav-link" data-es="Cerrar Sesión" data-en="Logout">Cerrar Sesión</button>
+                <!-- Replaced individual links with account dropdown -->
+                <div class="account-dropdown" id="accountDropdown">
+                    <button class="account-btn" id="accountBtn" aria-label="Account menu">
+                        <span class="account-icon">👤</span>
+                    </button>
+                    <div class="account-menu" id="accountMenu"></div>
+                </div>
             </div>
         </div>
     </nav>
@@ -91,6 +95,41 @@
         </div>
     </section>
 
+    <!-- Added company footer -->
+    <footer class="company-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 class="footer-title">WoMap</h3>
+                    <p class="footer-text" data-es="Creando espacios seguros para todas las mujeres, juntas." data-en="Creating safe spaces for all women, together.">
+                        Creando espacios seguros para todas las mujeres, juntas.
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-subtitle" data-es="Contacto" data-en="Contact">Contacto</h4>
+                    <p class="footer-text">
+                        Email: contacto@womap.com<br>
+                        <span data-es="Teléfono:" data-en="Phone:">Teléfono:</span> +34 900 123 456
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-subtitle" data-es="Información Legal" data-en="Legal Information">Información Legal</h4>
+                    <p class="footer-text">WoMap S.L. | CIF: B-12345678</p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-subtitle" data-es="Síguenos" data-en="Follow Us">Síguenos</h4>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 WoMap. <span data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span></p>
+            </div>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
     <script>
         // Check if user is logged in
@@ -101,6 +140,15 @@
         document.getElementById('logoutBtn').addEventListener('click', function() {
             localStorage.removeItem('womap_user');
             window.location.href = 'index.html';
+        });
+
+        // Account dropdown functionality
+        document.getElementById('accountBtn').addEventListener('click', function() {
+            const accountMenu = document.getElementById('accountMenu');
+            accountMenu.innerHTML = `
+                <a href="account.html" class="account-link" data-es="Mi Cuenta" data-en="My Account">Mi Cuenta</a>
+                <button id="logoutBtn" class="account-link" data-es="Cerrar Sesión" data-en="Logout">Cerrar Sesión</button>
+            `;
         });
     </script>
 </body>
