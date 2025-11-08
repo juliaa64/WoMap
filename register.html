@@ -40,6 +40,12 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">WoMap</a>
             <div class="nav-links">
+                <div class="account-dropdown" id="accountDropdown">
+                    <button class="account-btn" id="accountBtn" aria-label="Account menu">
+                        <span class="account-icon">👤</span>
+                    </button>
+                    <div class="account-menu" id="accountMenu"></div>
+                </div>
                 <a href="login.html" class="nav-link" data-es="Iniciar Sesión" data-en="Login">Iniciar Sesión</a>
             </div>
         </div>
@@ -81,6 +87,10 @@
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
+                        <label for="age" data-es="Edad" data-en="Age">Edad</label>
+                        <input type="number" id="age" name="age" min="18" max="120" required>
+                    </div>
+                    <div class="form-group">
                         <label for="password" data-es="Contraseña" data-en="Password">Contraseña</label>
                         <input type="password" id="password" name="password" required>
                     </div>
@@ -115,6 +125,16 @@
                 <!-- Step 3: Profile -->
                 <form id="step3Form" class="register-form" style="display: none;">
                     <div class="form-group">
+                        <label for="profilePicture" data-es="Foto de Perfil" data-en="Profile Picture">Foto de Perfil</label>
+                        <div class="profile-picture-upload">
+                            <div class="profile-picture-preview" id="profilePicturePreview">
+                                <span class="preview-icon">📷</span>
+                            </div>
+                            <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                            <label for="profilePicture" class="btn btn-outline btn-sm" data-es="Seleccionar Foto" data-en="Select Photo">Seleccionar Foto</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="city" data-es="Ciudad" data-en="City">Ciudad</label>
                         <input type="text" id="city" name="city" required>
                     </div>
@@ -139,6 +159,41 @@
             </div>
         </div>
     </section>
+
+    <!-- Company Footer -->
+    <footer class="company-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 class="footer-title">WoMap</h3>
+                    <p class="footer-text" data-es="Creando espacios seguros para todas las mujeres, juntas." data-en="Creating safe spaces for all women, together.">
+                        Creando espacios seguros para todas las mujeres, juntas.
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-subtitle" data-es="Contacto" data-en="Contact">Contacto</h4>
+                    <p class="footer-text">
+                        Email: contacto@womap.com<br>
+                        <span data-es="Teléfono:" data-en="Phone:">Teléfono:</span> +34 900 123 456
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-subtitle" data-es="Información Legal" data-en="Legal Information">Información Legal</h4>
+                    <p class="footer-text">WoMap S.L. | CIF: B-12345678</p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-subtitle" data-es="Síguenos" data-en="Follow Us">Síguenos</h4>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 WoMap. <span data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span></p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
     <script src="register.js"></script>
