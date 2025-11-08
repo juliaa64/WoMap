@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WoMap - Tu Seguridad es Nuestra Prioridad</title>
+    <!-- Added favicon with logo -->
+    <link rel="icon" type="image/png" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo_final-67k6gvntnpyybZBRQTHzo5q4HXed8b.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -45,17 +47,13 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">WoMap</a>
+            <!-- Added logo image next to WoMap text -->
+            <a href="index.html" class="nav-logo">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo_final-67k6gvntnpyybZBRQTHzo5q4HXed8b.png" alt="WoMap Logo" class="logo-image">
+                WoMap
+            </a>
             <div class="nav-links">
-                <!-- Account Dropdown -->
-                <div class="account-dropdown" id="accountDropdown">
-                    <button class="account-btn" id="accountBtn" aria-label="Account menu">
-                        <span class="account-icon">👤</span>
-                    </button>
-                    <div class="account-menu" id="accountMenu">
-                        <!-- Menu content changes based on login status -->
-                    </div>
-                </div>
+                <!-- Removed account dropdown from homepage, keeping only login/register links -->
                 <a href="login.html" class="nav-link" data-es="Iniciar Sesión" data-en="Login">Iniciar Sesión</a>
                 <a href="register.html" class="nav-link primary-btn" data-es="Registrarse" data-en="Sign Up">Registrarse</a>
             </div>
@@ -169,15 +167,6 @@
                 </div>
                 
                 <div class="faq-item">
-                    <h3 class="faq-question" data-es="¿Qué son los puntos por niveles?" data-en="What are level points?">
-                        ¿Qué son los puntos por niveles?
-                    </h3>
-                    <p class="faq-answer" data-es="Acumulas puntos cada vez que realizas llamadas o videollamadas con otras usuarias. A medida que subes de nivel, desbloqueas beneficios y reconocimientos en la comunidad." data-en="You accumulate points every time you make calls or video calls with other users. As you level up, you unlock benefits and recognition in the community.">
-                        Acumulas puntos cada vez que realizas llamadas o videollamadas con otras usuarias. A medida que subes de nivel, desbloqueas beneficios y reconocimientos en la comunidad.
-                    </p>
-                </div>
-                
-                <div class="faq-item">
                     <h3 class="faq-question" data-es="¿Es gratuita la aplicación?" data-en="Is the app free?">
                         ¿Es gratuita la aplicación?
                     </h3>
@@ -192,6 +181,15 @@
                     </h3>
                     <p class="faq-answer" data-es="Puedes dejar una review en la sección correspondiente indicando la ubicación y hora del día. Tu experiencia ayuda a otras usuarias." data-en="You can leave a review in the corresponding section indicating the location and time of day. Your experience helps other users.">
                         Puedes dejar una review en la sección correspondiente indicando la ubicación y hora del día. Tu experiencia ayuda a otras usuarias.
+                    </p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question" data-es="¿Mis datos están seguros?" data-en="Is my data secure?">
+                        ¿Mis datos están seguros?
+                    </h3>
+                    <p class="faq-answer" data-es="Sí, utilizamos encriptación de datos y cumplimos con todas las normativas de privacidad. Tu información personal nunca se comparte sin tu consentimiento." data-en="Yes, we use data encryption and comply with all privacy regulations. Your personal information is never shared without your consent.">
+                        Sí, utilizamos encriptación de datos y cumplimos con todas las normativas de privacidad. Tu información personal nunca se comparte sin tu consentimiento.
                     </p>
                 </div>
             </div>
