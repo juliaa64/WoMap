@@ -52,9 +52,35 @@ document.getElementById("step3Form").addEventListener("submit", (e) => {
   // Save user as logged in
   localStorage.setItem("womap_user", "logged_in")
 
+  const userProgress = {
+    points: 0,
+    level: 1,
+    callsMade: 0,
+    lastUpdated: new Date().toISOString(),
+  }
+  localStorage.setItem("womap_user_progress", JSON.stringify(userProgress))
+
   // Redirect to dashboard
   window.location.href = "dashboard.html"
 })
+
+const profilePictureInput = document.getElementById("profilePicture")
+const profilePicturePreview = document.getElementById("profilePicturePreview")
+
+if (profilePictureInput && profilePicturePreview) {
+  profilePictureInput.addEventListener("change", (e) => {
+    const file = e.target.files[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onload = (event) => {
+        profilePicturePreview.style.backgroundImage = `url(${event.target.result})`
+        profilePicturePreview.innerHTML = ""
+        localStorage.setItem("womap_profile_picture", event.target.result)
+      }
+      reader.readAsDataURL(file)
+    }
+  })
+}
 
 // Initialize
 showStep(1)
